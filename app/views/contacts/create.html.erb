@@ -98,20 +98,20 @@
               <div class="fields">
 
                   <div class="eleven wide required field">
-                      <%= f.label :name%><br>
+                      <label>Full Name</label>
                       <%= f.text_field :name, required: true%>
 
                   </div>
                   <div class="five wide required field">
-                    <%= f.label :employee_num %><br>
-                    <%= f.text_field :employee_num, required: true, placeholder:12345 %>  </div>
+                    <label>Employee No.</label>
+                    <%= f.text_field :employee_num, required: true, placeholder:"12345" %>  </div>
                 </div>
                 <div class="two fields">
                   <div class="field">
-                    <%= f.label :contact_num %><br>
-                    <%= f.text_field :contact_num, required: true, placeholder: 123456789 %>  </div>
+                    <label>Contact No.</label>
+                    <%= f.text_field :contact_num, required: true, placeholder: "09123456789" %>  </div>
                   <div class="required field">
-                    <%= f.label :email %><br>
+                    <label>Email Address</label>
                     <%= f.text_field :email, required: true %></div>
                 </div>
                 <h4 class="ui dividing header">Your Message</h4>
@@ -126,7 +126,7 @@
                   <%= f.text_field :nickname, hint: 'leave this field blank' %>
                 </div>
 
-                <%= f.submit 'Send Message', class: "ui right floated green submit button" %>
+              <%= f.submit 'Send Message', class: "ui right floated green submit button" %>
 
               <% end %>
           </div>
