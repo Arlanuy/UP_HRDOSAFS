@@ -1,0 +1,74 @@
+<html>
+ <%= stylesheet_link_tag    'employee_landing_page' %>
+<body>
+
+<div class="pusher">
+  <br><br>
+  <div class="ui five column doubling stackable grid container">
+    <div class="column">
+    </div>
+    <div class="column">
+      <center>
+      <div class="ui raised segment" id="segment">
+        <br>
+        <%= link_to apply_studyleave_path do %>
+        <div class="ui circular icon button" id="iconbutton1" name="readbutton">
+          <i class="huge circular file text outline icon"></i>
+        </div>
+        <% end %>
+
+        <h1>
+          Read
+        </h1>
+        <p>
+          Read about the application processes and requirements for the type of leave you would like to apply for.
+        </p>
+      </div>
+      </center>
+    </div>
+    <div class="column">
+      <center>
+      <div class="ui raised segment" id="segment">
+        <br>
+
+        <%= link_to evaluate_evaluation_path do %>
+
+        <div class="ui circular icon button" id="iconbutton2">
+          <i class="huge circular help icon"></i>
+        </div>
+        <% end %>
+
+        <h1>
+          Self Evaluate
+        </h1>
+        <p>
+          Evaluate yourself so you can confirm your eligibility to apply.
+        </p>
+      </div>
+      </center>
+    </div>
+    <div class="column">
+      <center>
+      <div class="ui raised segment" id="segment">
+        <br>
+
+        <%= link_to rsocalculator_path do %>
+        <div class="ui circular icon button" id="iconbutton3">
+          <i class="huge circular calculator icon"></i>
+        </div>
+        <% end %>
+        <h1>
+          Calculate
+        </h1>
+        <p>
+          Calculate your return service obligation for your return to campus.
+        </p>
+      </div>
+      </center>
+    </div>
+    <div class="column">
+    </div>
+  </div>
+</div>
+</body>
+</html>

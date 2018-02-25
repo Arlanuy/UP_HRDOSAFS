@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site Properties -->
+  <title>Self Evaluation - HRDO Scholarship and Fellowship Services</title>
+
+
+  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js' %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js' %>
+  <!-- fonts -->
+</head>
+
+<body>
+
+  <div class="pusher">
+
+  <div class="ui center aligned text container">
+    <h1 id="header">Self Evaluation</h1>
+    <h4 id="subheader">Evaluate yourself to check if you are qualified</h4>
+    <%= render html: "#{@output}".html_safe %>
+  </div>
+
+  <div class="ui divider"></div>
+
+  <div class="ui centered stackable grid">
+    <div class="five wide column">
+    <div class="sltxt">
+      <h2 class="ui dividing red header" id="header2"><i class="puzzle icon"></i>Study Leave</h2>
+      <div class="ui justified container">
+    <!-- study leave description -->
+        <p>As a University policy, UP faculty members are encouraged to pursue graduate studies in fields that are within the academic priorities of their departments, colleges and the University.
+        </p>
+        <p>Faculty members may be given tuition waiver and full or partial load reduction from their teaching. While the grant of full or partial load reduction is designed to help faculty students complete their studies in the soonest time possible, it is subject to conditions which ensure that units are able to meet their teaching responsibilities.
+        </p>
+      </div>
+    </div>
+    <!-- doctoral description -->
+    <div class="dsftxt">
+      <h2 class="ui dividing red header" id="header2"><i class="puzzle icon"></i>Doctoral Studies Fund</h2>
+      <div class="ui justified container">
+        <p>The UP Modernization-Doctoral Studies Fund aims to produce 100 faculty members with Ph.D.s in selected disciplines in the next three to four years, starting 2002, through two means:
+        <ul>
+          <li>Local faculty fellowship in UP</li>
+          <li>Foreign faculty fellowship for full Ph.D. study in a reputable university abroad</li>
+        </ul>
+        </p>
+      </div>
+    </div>
+    <!-- sabbatical description -->
+    <div class="sabbtxt">
+      <h2 class="ui dividing red header" id="header2"><i class="puzzle icon"></i>Sabbatical</h2>
+      <div class="ui justified container">
+        <p>A sabbatical is a privilege given to a faculty member that exempts him/her from performing regular duties. This privilege may be granted to faculty members to encourage study, investigation, and research; and to improve their competency to better serve the University.
+        </p>
+      </div>
+    </div>
+    <!-- special detail description -->
+    <div class="sdtxt">
+      <h2 class="ui dividing red header" id="header2"><i class="puzzle icon"></i>Special Detail</h2>
+      <div class="ui justified container">
+        <p>A member of the academic staff or an administrative officer may be assigned by the President or the Chancellor, as the case may be, on a special detail in the Philippines or  abroad for the benefit of the University or of any of its units under conditions to be fixed by him/her in each case.
+        </p>
+      </div>
+    </div>
+    <!-- enrollment description -->
+    <div class="enrtxt">
+      <h2 class="ui dividing red header" id="header2"><i class="puzzle icon"></i>Enrollment Privilege</h2>
+      <div class="ui justified container">
+          <p>As a University policy, UP faculty members are encouraged to pursue graduate studies in fields that are within the academic priorities of their departments, colleges and the University.
+          </p>
+          <p>Faculty members may be given tuition waiver and full or partial load reduction from their teaching. While the grant of full or partial load reduction is designed to help faculty students complete their studies in the soonest time possible, it is subject to conditions which ensure that units are able to meet their teaching responsibilities.
+          </p>
+      </div>
+    </div>
+    <!-- message info underneath -->
+    <div class="ui info message">
+      <div class="header">
+        For more information
+      </div>
+      <ul class="list">
+        <li>Qualifications, Process, and Requirements
+          <%= link_to "click here", apply_studyleave_path, class:"sltxt" %>
+          <%= link_to "click here", apply_dsf_path, class:"dsftxt" %>
+          <%= link_to "click here", apply_sabbatical_path, class:"sabbtxt" %>
+          <%= link_to "click here", apply_specialdetail_path, class:"sdtxt" %>
+          <%= link_to "click here", apply_enrollmentprivileges_path, class:"enrtxt" %>
+        </li>
+        <li>RSO calculator <%= link_to "click here", web_pages_rsocalculator_path %></li>
+      </ul>
+    </div>
+  </div>
+
+<!-- For the Evaluate(temporary) -->
+  <div class="nine wide column">
+
+
+          <div class="ui top attached tabular menu">
+            <div class="active item" id="sltab" data-tab="studyleave">Study Leave
+            </div>
+
+            <div class="item" id="dsftab" data-tab="dsf">DSF</div>
+            <div class="item" id="sabbtab" data-tab="sabbatical">Sabbatical</div>
+            <div class="item" id="sdtab" data-tab="specialdetail">Special Detail</div>
+            <div class="item" id="enrtab" data-tab="enrollmentpriv">Enrollment Privileges</div>
+          </div>
+
+      <!-- SL START -->
+          <div class="ui bottom attached active tab segment" data-tab="studyleave">
+            <%= form_tag({action: "eval_SL"}, {class: "ui form", method: "get"}) do %>
+              <div class="inline fields">
+                <div class="field">
+                  <label><i class="travel icon"></i>Type of Leave:</label>
+                    <div class="ui radio checkbox">
+                      <input name="areaInp_0" id="abroad" value="Abroad" tabindex="0" class="hidden" type="radio">
+                      <label for="localabroad" id="abroad1">Abroad</label>
+                    </div>
+                    <div class="ui radio checkbox">
+                      <input name="areaInp_0" id="local" value="Local" checked="" tabindex="0" class="hidden" type="radio">
+                      <label for="localabroad" id="local1">Local</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui checkbox">
+                      <input name="paidInp_0" tabindex="0" class="hidden" type="checkbox">
+                      <label for="paidInp_0" id="wpay1">With Pay?</label>
+                    </div>
+                  </div>
+              </div>
+              <div class="equal width fields">
+                <div class="field">
+                  <label><i class="student icon"></i>Employee Type</label>
+                  <div class="ui search selection dropdown" id="empdrop1">
+                    <input name="emptype" id="emptype1" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text" id="et1">Employee Type</div>
+                    <div class="menu">
+                        <div class="item" data-value="F">Faculty</div>
+                        <div class="item" data-value="A">Administrative Staff</div>
+                        <div class="item" data-value="R">REPS</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="rankdrop1" class="disabled field">
+                  <label><i class="student icon"></i>Rank (if faculty)</label>
+                  <div class="ui search selection dropdown">
+                    <input name="rank" id="rank1" type="hidden" disabled>
+                    <i class="dropdown icon"></i>
+                    <div class="default text" id="fr1">Faculty Rank</div>
+                    <div class="menu">
+                        <div class="item" data-value="1">Professor</div>
+                        <div class="item" data-value="2">Associate Professor</div>
+                        <div class="item" data-value="3">Assistant Professor</div>
+                        <div class="item" data-value="4">Instructor</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="inline fields">
+                  <div class="field">
+                    <label>Substitute?</label>
+                      <div class="ui radio checkbox">
+                        <input name="subs" value="Y" id="subsyes" tabindex="0" class="hidden" type="radio">
+                        <label for="subs" id="Y1">Yes</label>
+                      </div>
+                      <div class="ui radio checkbox">
+                        <input name="subs" value="N" id="subsno" checked="" tabindex="0" class="hidden" type="radio">
+                        <label for="subs" id="N1">No</label>
+                      </div>
+                  </div>
+                  <div class="field" style="margin-left: 50px;">
+                  <label>Tenured?</label>
+                      <div class="ui radio checkbox">
+                        <input name="tenured" value="Y" id="tenyes" tabindex="0" class="hidden" type="radio">
+                        <label for="tenured" id="Y2">Yes</label>
+                      </div>
+                      <div class="ui radio checkbox">
+                        <input name="tenured" value="N" id="tenno" checked="" tabindex="0" class="hidden" type="radio">
+                        <label for="tenured" id="N2">No</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="inline field">
+                <label><i class="hourglass full icon"></i>Years of Service (Regular):</label>
+                <div class="ui right labeled input">
+                  <input name="servYear" id="servYear1" type="number" value="" min="0" style="width:80px;">
+                  <div class="ui label">year/s</div>
+                </div>
+              </div>
+              <div class="field">
+                <label><i class="birthday icon"></i>Birthday</label>
+                <div class="ui calendar" id="SLbirthdayCal">
+                  <div class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input name="birthday" id="birthday1" type="text" placeholder="mm/dd/yyyy" data-provide="datepicker">
+                  </div>
+                </div>
+              </div>
+
+              <button class="ui blue fluid button" type="submit" name="Sub_SL" value="Sub_SL">Evaluate</button>
+              <div class="ui center aligned container" style="margin-top: 10px; font-size: 13px;">
+                <a href="javascript:void(0)" class="resetlink">Reset</a>
+              </div>
+            <% end %>
+
+          </div>
+      <!-- SL END -->
+
+      <!-- DSF START-->
+          <div class="ui bottom attached tab segment" data-tab="dsf">
+           <%= form_tag({action: "eval_DSF"}, {class: "ui form", method: "get"}) do %>
+              <div class="inline fields">
+                <div class="field">
+                <label><i class="travel icon"></i>Type of Leave:</label>
+                  <div class="ui radio checkbox">
+                    <input name="areaInp_0" id="abroad" value="Abroad" tabindex="0" class="hidden" type="radio">
+                    <label for="localabroad" id="abroad2">Abroad</label>
+                  </div>
+                  <div class="ui radio checkbox">
+                    <input name="areaInp_0" id="local" value="Local" checked="" tabindex="0" class="hidden" type="radio">
+                    <label for="localabroad" id="local2">Local</label>
+                  </div>
+                </div>
+              </div>
+              <div class="equal width fields">
+                <div class="field">
+                  <label><i class="student icon"></i>Employee Type</label>
+                  <div class="ui search selection dropdown" id="empdrop2">
+                    <input name="emptype" id="emptype2" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text" id="et2">Employee Type</div>
+                    <div class="menu">
+                        <div class="item" data-value="F">Faculty</div>
+                        <div class="item" data-value="A">Administrative Staff</div>
+                        <div class="item" data-value="R">REPS</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="rankdrop2" class="disabled field">
+                  <label><i class="student icon"></i>Rank (if faculty)</label>
+                  <div class="ui search selection dropdown">
+                    <input name="rank" id="rank2" type="hidden" disabled>
+                    <i class="dropdown icon"></i>
+                    <div class="default text" id="fr2">Faculty Rank</div>
+                    <div class="menu">
+                        <div class="item" data-value="1">Professor</div>
+                        <div class="item" data-value="2">Associate Professor</div>
+                        <div class="item" data-value="3">Assistant Professor</div>
+                        <div class="item" data-value="4">Instructor</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="inline fields">
+                  <div class="field">
+                    <label>Substitute?</label>
+                      <div class="ui radio checkbox">
+                        <input name="subs" value="Y" id="subsyes" tabindex="0" class="hidden" type="radio">
+                        <label for="subs" id="Y3">Yes</label>
+                      </div>
+                      <div class="ui radio checkbox">
+                        <input name="subs" value="N" id="subsno" checked="" tabindex="0" class="hidden" type="radio">
+                        <label for="subs" id="N3">No</label>
+                      </div>
+                  </div>
+                  <div class="field" style="margin-left: 50px;">
+                  <label>Tenured?</label>
+                      <div class="ui radio checkbox">
+                        <input name="tenured" value="Y" id="tenyes" tabindex="0" class="hidden" type="radio">
+                        <label for="tenured" id="Y4">Yes</label>
+                      </div>
+                      <div class="ui radio checkbox">
+                        <input name="tenured" value="N" id="tenno" checked="" tabindex="0" class="hidden" type="radio">
+                        <label for="tenured" id="N4">No</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="inline field">
+                <label><i class="hourglass full icon"></i>Years of Service:</label>
+                <div class="ui right labeled input">
+                  <input name="servYear" id="servYear2" type="number" value="" min="0" style="width:80px;">
+                  <div class="ui label">year/s</div>
+                </div>
+              </div>
+              <div class="field">
+                <label><i class="birthday icon"></i>Birthday</label>
+                <div class="ui calendar" id="DSFbirthdayCal">
+                  <div class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input name="birthday" id="birthday2" type="text" placeholder="mm/dd/yyyy" data-provide="datepicker">
+                  </div>
+                </div>
+              </div>
+
+              <button class="ui blue fluid button" type="submit" name="Sub_DSF" value="Sub_DSF">Evaluate</button>
+              <div class="ui center aligned container" style="margin-top: 10px; font-size: 13px;">
+                <a href="javascript:void(0)" class="resetlink">Reset</a>
+              </div>
+            <% end %>
+
+          </div>
+      <!-- DSF END-->
+
+      <!-- SAB START-->
+          <div class="ui bottom attached tab segment" data-tab="sabbatical">
+            <%= form_tag({action: "eval_Sab"}, {class: "ui form", method: "get"}) do %>
+              <div class="equal width fields">
+                <div class="field">
+                  <label><i class="student icon"></i>Employee Type</label>
+                  <div class="ui search selection dropdown" id="empdrop3">
+                    <input name="emptype" id="emptype3" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text" id="et3">Employee Type</div>
+                    <div class="menu">
+                        <div class="item" data-value="F">Faculty</div>
+                        <div class="item" data-value="A">Administrative Staff</div>
+                        <div class="item" data-value="R">REPS</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="rankdrop3" class="disabled field">
+                  <label><i class="student icon"></i>Rank (if faculty)</label>
+                  <div class="ui search selection dropdown">
+                    <input name="rank" id="rank3" type="hidden" disabled>
+                    <i class="dropdown icon"></i>
+                    <div class="default text" id="fr3">Faculty Rank</div>
+                    <div class="menu">
+                        <div class="item" data-value="1">Professor</div>
+                        <div class="item" data-value="2">Associate Professor</div>
+                        <div class="item" data-value="3">Assistant Professor</div>
+                        <div class="item" data-value="4">Instructor</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label class="SElabel"><i class="hourglass full icon"></i>Intended Duration of Sabbatical (Effectivity)</label>
+                <div class="two fields">
+                  <div class="field">
+                    <label>Start Date</label>
+                    <div class="ui calendar" id="SABeffectStartCal">
+                      <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input name="effectStart" id="effectStart" type="text" placeholder="mm/dd/yyyy" data-provide="datepicker">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>End Date</label>
+                    <div class="ui calendar" id="SABeffectEndCal">
+                      <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input name="effectEnd" id="effectEnd" type="text" placeholder="mm/dd/yyyy" data-provide="datepicker">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="inline field">
+                <label><i class="hourglass full icon"></i>Years of Service:</label>
+                <div class="ui right labeled input">
+                  <input name="servYear" id="servYear3" type="number" value="" min="0" style="width:80px;">
+                  <div class="ui label">year/s</div>
+                </div>
+              </div>
+              <div class="field">
+                <label><i class="birthday icon"></i>Birthday</label>
+                <div class="ui calendar" id="SABbirthdayCal">
+                  <div class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input name="birthday" id="birthday3" type="text" placeholder="mm/dd/yyyy" data-provide="datepicker">
+                  </div>
+                </div>
+              </div>
+
+              <button class="ui blue fluid button" type="submit" name="Sub_Sab" value="Sub_Sab">Evaluate</button>
+              <div class="ui center aligned container" style="margin-top: 10px; font-size: 13px;">
+                <a href="javascript:void(0)" class="resetlink">Reset</a>
+              </div>
+            <% end %>
+
+          </div>
+      <!-- SAB END-->
+
+      <!-- SD START-->
+          <div class="ui bottom attached tab segment" data-tab="specialdetail">
+            <%= form_tag({action: "eval_SD"}, {class: "ui form", method: "get"}) do %>
+              <div class="inline fields">
+                <div class="field">
+                  <label><i class="travel icon"></i>Type of Leave:</label>
+                    <div class="ui radio checkbox">
+                      <input name="areaInp_0" id="abroad" value="Abroad" tabindex="0" class="hidden" type="radio">
+                      <label for="localabroad" id="abroad3">Abroad</label>
+                    </div>
+                    <div class="ui radio checkbox">
+                      <input name="areaInp_0" id="local" value="Local" checked="" tabindex="0" class="hidden" type="radio">
+                      <label for="localabroad" id="local3">Local</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui checkbox">
+                      <input name="paidInp_0" tabindex="0" class="hidden" type="checkbox">
+                      <label for="paidInp_0" id="wpay2">With Pay?</label>
+                    </div>
+                  </div>
+              </div>
+              <div class="equal width fields">
+                <div class="field">
+                  <label><i class="student icon"></i>Employee Type</label>
+                  <div class="ui search selection dropdown" id="empdrop4">
+                    <input name="emptype" id="emptype4" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text" id="et4">Employee Type</div>
+                    <div class="menu">
+                        <div class="item" data-value="F">Faculty</div>
+                        <div class="item" data-value="A">Administrative Staff</div>
+                        <div class="item" data-value="R">REPS</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="rankdrop4" class="disabled field">
+                  <label><i class="student icon"></i>Rank (if faculty)</label>
+                  <div class="ui search selection dropdown">
+                    <input name="rank" id="rank4" type="hidden" disabled>
+                    <i class="dropdown icon"></i>
+                    <div class="default text" id="fr4">Faculty Rank</div>
+                    <div class="menu">
+                        <div class="item" data-value="1">Professor</div>
+                        <div class="item" data-value="2">Associate Professor</div>
+                        <div class="item" data-value="3">Assistant Professor</div>
+                        <div class="item" data-value="4">Instructor</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="inline field">
+                <label>Max no. of missed class per course handled during the semester:</label>
+                <div class="ui right labeled input">
+                  <input name="missed" id="missed" type="number" value="" min="0" style="width:80px;">
+                  <div class="ui label">day/s</div>
+                </div>
+              </div>
+              <div class="field">
+                <label class="SElabel"><i class="hourglass full icon"></i>Intended Schedule of Travel</label>
+                <div class="two fields">
+                  <div class="field">
+                    <label>Start Date</label>
+                    <div class="ui calendar" id="SDschedStartCal">
+                      <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input name="schedStart" id="schedStart" type="text" placeholder="mm/dd/yyyy" data-provide="datepicker">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>End Date</label>
+                    <div class="ui calendar" id="SDschedEndCal">
+                      <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input name="schedEnd" id="schedEnd" type="text" placeholder="mm/dd/yyyy" data-provide="datepicker">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button class="ui blue fluid button" type="submit" name="Sub_SD" value="Sub_SD">Evaluate</button>
+              <div class="ui center aligned container" style="margin-top: 10px; font-size: 13px;">
+                <a href="javascript:void(0)" class="resetlink">Reset</a>
+              </div>
+            <% end %>
+
+          </div>
+      <!-- SD END-->
+
+      <!-- EP START-->
+          <div class="ui bottom attached tab segment" data-tab="enrollmentpriv">
+            <%= form_tag({action: "eval_EP"}, {class: "ui form", method: "get"}) do %>
+              <div class="inline fields">
+                <div class="field">
+                <label><i class="travel icon"></i>Type of Leave:</label>
+                  <div class="ui radio checkbox">
+                    <input name="areaInp_0" id="abroad" value="Abroad" tabindex="0" class="hidden" type="radio">
+                    <label for="localabroad" id="abroad4">Abroad</label>
+                  </div>
+                  <div class="ui radio checkbox">
+                    <input name="areaInp_0" id="local" value="Local" checked="" tabindex="0" class="hidden" type="radio">
+                    <label for="localabroad" id="local4">Local</label>
+                  </div>
+                </div>
+              </div>
+              <div class="inline fields">
+                <div class="field">
+                  <label><i class="student icon"></i>Employee Type</label>
+                  <div class="ui search selection dropdown">
+                    <input name="emptype" id="emptype5" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text" id="et5">Employee Type</div>
+                    <div class="menu">
+                        <div class="item" data-value="F">Faculty</div>
+                        <div class="item" data-value="A">Administrative Staff</div>
+                        <div class="item" data-value="R">REPS</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui checkbox">
+                      <input name="fulltime" tabindex="0" class="hidden" type="checkbox">
+                      <label>Full-Time?</label>
+                    </div>
+                </div>
+              </div>
+              <div class="inline fields">
+                <div class="field">
+                  <label>Intended no. of teaching units:</label>
+                  <div class="ui right labeled input">
+                    <input name="teachunits" type="number" value="" min="0" style="width:80px;">
+                    <div class="ui label">unit/s per sem</div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Intended no. of study units:</label>
+                  <div class="ui right labeled input">
+                    <input name="studyunits" type="number" value="" min="0" style="width:80px;">
+                    <div class="ui label">unit/s per sem</div>
+                  </div>
+                </div>
+              </div>
+
+              <button class="ui blue fluid button" type="submit" name="Sub_EP" value="Sub_EP">Evaluate</button>
+              <div class="ui center aligned container" style="margin-top: 10px; font-size: 13px;">
+                <a href="javascript:void(0)" class="resetlink">Reset</a>
+              </div>
+            <% end %>
+
+          </div>
+      <!-- EP END-->
+  </div>
+</div>
+</div>
+
+</body>
+  <script>
+  $(function(){
+    // tab
+    $('.menu .item').tab();
+    // checkbox
+    $('.ui.checkbox').checkbox();
+    // dropdown
+    $('.ui.dropdown').dropdown();
+    //reset all forms
+    $('.resetlink').on('click', function() {
+      for(var i=0; i<5; i++) {
+        $('.ui.form')[i].reset();
+      }
+      $('.ui.form .ui.dropdown').dropdown('restore defaults');
+    });
+    //FOR THE SIDE DESCRIPTION
+    $(".dsftxt").hide();
+    $(".sabbtxt").hide();
+    $(".sdtxt").hide();
+    $(".enrtxt").hide();
+    $("#sltab").click(function(){
+      $(".dsftxt").hide();
+      $(".sabbtxt").hide();
+      $(".sdtxt").hide();
+      $(".enrtxt").hide();
+      $(".sltxt").fadeIn();
+    });
+    $("#dsftab").click(function(){
+      $(".sltxt").hide();
+      $(".sabbtxt").hide();
+      $(".sdtxt").hide();
+      $(".enrtxt").hide();
+      $(".dsftxt").fadeIn();
+    });
+    $("#sabbtab").click(function(){
+      $(".sltxt").hide();
+      $(".dsftxt").hide();
+      $(".sdtxt").hide();
+      $(".enrtxt").hide();
+      $(".sabbtxt").fadeIn();
+    });
+    $("#sdtab").click(function(){
+      $(".sltxt").hide();
+      $(".dsftxt").hide();
+      $(".sabbtxt").hide();
+      $(".enrtxt").hide();
+      $(".sdtxt").fadeIn();
+    });
+    $("#enrtab").click(function(){
+      $(".sltxt").hide();
+      $(".dsftxt").hide();
+      $(".sabbtxt").hide();
+      $(".sdtxt").hide();
+      $(".enrtxt").fadeIn();
+    });
+
+    // FORM VALIDATION
+    $('.ui.form').form({
+    inline: true,
+    on: 'change',
+      fields: {
+        emptype1: {
+          identifier: 'emptype1',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your emptype.'
+        }]},
+        emptype2: {
+          identifier: 'emptype2',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your emptype.'
+        }]},
+        emptype3: {
+          identifier: 'emptype3',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your emptype.'
+        }]},
+        emptype4: {
+          identifier: 'emptype4',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your emptype.'
+        }]},
+        emptype5: {
+          identifier: 'emptype5',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your emptype.'
+        }]},
+        rank1:{
+          identifier: 'rank1',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your rank.'
+        }]},
+        rank2:{
+          identifier: 'rank2',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your rank.'
+        }]},
+        rank3:{
+          identifier: 'rank3',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your rank.'
+        }]},
+        rank3:{
+          identifier: 'rank3',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your rank.'
+        }]},
+        birthday:{
+          identifier: 'birthday',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your birthday.'
+        }]},
+        servYear:{
+          identifier: 'servYear',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter the years of your service.'
+        }]},
+        missed:{
+          identifier: 'missed',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter the number of your missed classes.'
+        }]},
+        teachunits:{
+          identifier: 'teachunits',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter the number of your intended teaching units.'
+        }]},
+        studyunits:{
+          identifier: 'studyunits',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter the number of your intended study units.'
+        }]},
+        schedStart:{
+          identifier: 'schedStart',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your intended start schedule of your leave.'
+        }]},
+        schedEnd:{
+          identifier: 'schedEnd',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your intended end schedule of your leave.'
+        }]},
+        effectStart:{
+          identifier: 'effectStart',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your intended start schedule of sabbatical.'
+        }]},
+        effectEnd:{
+          identifier: 'effectEnd',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter your intended end schedule of sabbatical.'
+        }]}
+      }
+     });
+
+    // FOR THE employeetype-rank INPUT
+    // SL employeetype-rank
+    $('#empdrop1').change(function() {
+      if (document.getElementById("emptype1").value=="F") {
+        $('#rankdrop1').removeClass("disabled");
+        $('#rank1').removeAttr('disabled');
+      } else {
+        $('#rankdrop1').addClass("disabled");
+        $('#rank1').attr('disabled', '');
+      };
+    });
+    //DSF employeetype-rank
+    $('#empdrop2').change(function() {
+      if (document.getElementById("emptype2").value=="F") {
+        $('#rankdrop2').removeClass("disabled");
+        $('#rank2').removeAttr('disabled');
+      } else {
+        $('#rankdrop2').addClass("disabled");
+        $('#rank2').attr('disabled', '');
+      };
+    });
+    //sabbatical employeetype-rank
+    $('#empdrop3').change(function() {
+      if (document.getElementById("emptype3").value=="F") {
+        $('#rankdrop3').removeClass("disabled");
+        $('#rank3').removeAttr('disabled');
+      } else {
+        $('#rankdrop3').addClass("disabled");
+        $('#rank3').attr('disabled', '');
+      };
+    });
+    //SD employeetype-rank
+    $('#empdrop4').change(function() {
+      if (document.getElementById("emptype4").value=="F") {
+        $('#rankdrop4').removeClass("disabled");
+        $('#rank4').removeAttr('disabled');
+      } else {
+        $('#rankdrop4').addClass("disabled");
+        $('#rank4').attr('disabled', '');
+      };
+    });
+
+    // FOR THE DATES INPUT
+    var today = new Date();
+    // SL birthday calendar
+    $('#SLbirthdayCal').calendar({
+      type: 'date',
+      startMode: 'year',
+      maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+      formatter: {
+        date: function (date, settings) {
+          if (!date) return '';
+          var day = date.getDate();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
+          return month + '/' + day + '/' + year;
+        }
+      }
+    });
+    // SL birthday calendar
+    $('#DSFbirthdayCal').calendar({
+      type: 'date',
+      startMode: 'year',
+      maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+      formatter: {
+        date: function (date, settings) {
+          if (!date) return '';
+          var day = date.getDate();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
+          return month + '/' + day + '/' + year;
+        }
+      }
+    });
+    // Sabbatical birthday calendar
+    $('#SABbirthdayCal').calendar({
+      type: 'date',
+      startMode: 'year',
+      maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+      formatter: {
+        date: function (date, settings) {
+          if (!date) return '';
+          var day = date.getDate();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
+          return month + '/' + day + '/' + year;
+        }
+      }
+    });
+    //SAB effectivity date range
+    $('#SABeffectStartCal').calendar({
+      type: 'date',
+      endCalendar: $('#SABeffectEndCal'),
+      minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+      formatter: {
+        date: function (date, settings) {
+          if (!date) return '';
+          var day = date.getDate();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
+          return month + '/' + day + '/' + year;
+        }
+      }
+    });
+    $('#SABeffectEndCal').calendar({
+      type: 'date',
+      startCalendar: $('#SABeffectStartCal'),
+      formatter: {
+        date: function (date, settings) {
+          if (!date) return '';
+          var day = date.getDate();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
+          return month + '/' + day + '/' + year;
+        }
+      }
+    });
+    //SD schedule date range
+    $('#SDschedStartCal').calendar({
+      type: 'date',
+      endCalendar: $('#SDschedEndCal'),
+      minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+      formatter: {
+        date: function (date, settings) {
+          if (!date) return '';
+          var day = date.getDate();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
+          return month + '/' + day + '/' + year;
+        }
+      }
+    });
+    $('#SDschedEndCal').calendar({
+      type: 'date',
+      startCalendar: $('#SDschedStartCal'),
+      formatter: {
+        date: function (date, settings) {
+          if (!date) return '';
+          var day = date.getDate();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
+          return month + '/' + day + '/' + year;
+        }
+      }
+    });
+
+  });
+  </script>
+
+</html>

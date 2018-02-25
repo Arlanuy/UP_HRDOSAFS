@@ -1,0 +1,109 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "semantic-ui";
+
+body {
+  background: #ececec;
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+}
+
+.column {
+  vertical-align: center;
+  text-align: left;
+}
+
+h1 {
+  font-weight: 500;
+}
+
+h4 {
+  font-weight: 200;
+}
+
+#sub {
+  margin-bottom: 60px;
+  color: grey;
+}
+
+#sub1 {
+  margin-bottom: 60px;
+  color: #FFFFFF;
+}
+
+#sub2 {
+  color: #db2828;
+}
+
+#subqual {
+  margin-bottom: -80px;
+}
+
+#icon1 {
+  padding-left: 85px;
+}
+
+#icon2 {
+  padding-left: 110px;
+}
+
+#icon3 {
+  padding-left: 94px;
+}
+
+#icon4 {
+  padding-left: 85px;
+  margin-top: 50px;
+}
+
+#link {
+  color: #FFFFFF;
+  background: none;
+  border: none;
+}
+
+#iconlink {
+  margin-top: 200px;
+}
+
+#segment1 {
+  border: 80px solid #FFFFFF;
+  background-color: #FFFFFF !important;
+}
+
+#segment2 {
+  border: 80px solid #333333;
+  margin-top: -15px;
+  background-color: #333333 !important;
+  color: #FFFFFF;
+  font-weight: 900px;
+}
+
+#segment3 {
+  border: 80px solid #ececec;
+  margin-top: -15px;
+}
+
+#verticalcol {
+  vertical-align: center !important;
+  text-align: center !important;
+}
+
+.ui.accordion {
+  text-align: left;
+}
+
+#acctitle {
+  color: #FFFFFF;
+}
+
+/*header footer*/
+.ui.menu .item img.logo {
+  margin-right: 1.5em;
+}
+
+.ui.footer.segment {
+  margin: 0em 0em 0em;
+  padding: 2em 0em;
+}

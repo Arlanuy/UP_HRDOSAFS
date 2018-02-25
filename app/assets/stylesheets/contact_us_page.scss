@@ -1,0 +1,55 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "semantic-ui";
+
+#sub {
+      margin-bottom: 60px;
+      color: grey;
+    }
+  #subqual {
+      margin-bottom: -20px;
+    }
+
+
+  #title{
+    text-align: left;
+    color: grey;
+    font-weight: 100;
+  }
+#segment1 {
+  border: 80px solid #ececec;
+}
+
+#segment2 {
+  border: 80px solid #333333;
+  margin-top: -15px;
+  background-color: #333333 !important;
+  color: #FFFFFF;
+  font-weight: 900px;
+}
+
+#segment3 {
+  border: 80px solid #ececec;
+  margin-top: -15px;
+}
+#sub1 {
+  margin-bottom: 60px;
+  color: #FFFFFF;
+}
+
+body {
+  background: #ececec;
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+}
+#white_link{
+	color: #FFFFFF;
+}
+    h2 {
+      color: #DC2829 !important;
+    }
+
+    h4 {
+      font-weight: 200;
+    }

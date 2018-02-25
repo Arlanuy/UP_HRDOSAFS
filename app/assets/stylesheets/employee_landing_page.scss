@@ -1,0 +1,48 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "semantic-ui";
+
+body {
+
+  background-image: url('/assets/landing_background.jpg');
+
+  /*background-color: #cccccc;*/
+  background-size: 100%
+}
+#futer{
+  margin: 5em 0em 0em;
+  padding: 1em 0em;
+  width: 100%
+}
+
+#segment{
+	background-color: rgba(255, 255, 255, .4);
+  height: 365px;
+}
+
+#iconbutton1:hover {
+  background-color: #e35253;
+  color: #FFFFFF;
+}
+
+#iconbutton1{
+  color: #000000
+}
+
+#iconbutton2:hover {
+  background-color: #e35253;
+  color: #FFFFFF;
+}
+
+#iconbutton2{
+  color: #000000
+}
+
+#iconbutton3:hover {
+  background-color: #e35253;
+  color: #FFFFFF;
+}
+
+#iconbutton3{
+  color: #000000
+}

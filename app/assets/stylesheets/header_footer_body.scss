@@ -1,0 +1,35 @@
+/*body*/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "semantic-ui";
+
+#header {
+	font-weight: 500;
+	padding-top: 40px;
+}
+#subheader {
+	color: grey;
+	margin-top: -5px;
+	font-weight: 200;
+	margin-bottom: 45px;
+}
+#header2 {
+	font-weight: 100;
+}
+.pusher {
+	padding-top: 80px;
+	padding-left: 8%;
+	padding-right: 8%;
+	padding-bottom: 100px;
+	min-height: 100%;
+}
+
+/*header footer*/
+.ui.menu .item img.logo {
+	margin-right: 1.5em;
+}
+
+.ui.footer.segment {
+	margin: 0em 0em 0em;
+	padding: 2em 0em;
+}

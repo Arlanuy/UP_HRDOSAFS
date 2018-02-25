@@ -1,0 +1,19 @@
+<div class="ui red fixed inverted stackable menu">
+  <div class="ui container" id="hybrid">
+    <%= link_to  image_tag("logo_white.png") + "HRDO Scholarship and Fellowship Services".html_safe, landingpage_path, class: "item" %>
+    <%= link_to "Self Evaluation", evaluate_evaluation_path, class: "item" %>
+    <div class="ui inactive simple dropdown item">
+      <a href="">Application Process</a><i class="dropdown icon"></i>
+      <div class="menu">
+        <%= link_to "Study Leave", apply_studyleave_path, class: "item" %>
+        <%= link_to "Doctoral Studies Fund", apply_dsf_path , class: "item" %>
+        <%= link_to "Sabbatical", apply_sabbatical_path, class: "item" %>
+        <%= link_to "Special Detail", apply_specialdetail_path, class: "item" %>
+        <%= link_to "Enrollment Privileges", apply_enrollmentprivileges_path, class: "item" %>
+      </div>
+    </div>
+    <%= link_to "RSO Calculator", rsocalculator_path, class: "item"%>
+
+    <%= link_to "Contact Us", contacts_new_path, class: "item"%>
+  </div>
+</div>
