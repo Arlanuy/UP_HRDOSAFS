@@ -89,25 +89,25 @@
 
 
           <div class="nine wide column">
-            <%= form_for(@contact, html: {class: "ui form"}) do |f| %>
+            <%= form_for(@contacts, html: {class: "ui form"}) do |f| %>
               <div class="fields">
 
                   <div class="eleven wide required field">
                       <%= f.label :name%><br>
-                      <%= f.text_field :name, required: true%>
+                      <%= f.text_field :name, required: true, placeholder: "First Name MI. Last Name"%>
 
                   </div>
                   <div class="five wide required field">
                     <%= f.label :employee_num %><br>
-                    <%= f.text_field :employee_num, required: true %>  </div>
+                    <%= f.text_field :employee_num, required: true, placeholder: "12345" %>  </div>
                 </div>
                 <div class="two fields">
                   <div class="field">
                     <%= f.label :contact_num %><br>
-                    <%= f.text_field :contact_num, required: true, placeholder: 123456789 %>  </div>
+                    <%= f.text_field :contact_num, required: true, placeholder: 09123456789 %>  </div>
                   <div class="required field">
                     <%= f.label :email %><br>
-                    <%= f.text_field :email, required: true %></div>
+                    <%= f.text_field :email, required: true, placeholder: "email@example.com" %></div>
                 </div>
                 <h4 class="ui dividing header">Your Message</h4>
                 <div class="required field">
